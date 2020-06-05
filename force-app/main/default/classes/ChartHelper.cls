@@ -3,7 +3,7 @@ public without sharing class ChartHelper {
     @AuraEnabled
     public static List<chartData> GetInventory(){
         List<chartData> cht = new List<chartData>();
-
+        // some comment
         for(AggregateResult result : [select Family,sum(Quantity_Remaining__c) remainingQuantity from product2 where Quantity_Remaining__c > 0 and isActive = true group by Family]){
             ChartData data = new ChartData(String.valueOf(result.get('Family')),Integer.valueOf(result.get('remainingQuantity')));
             cht.add(data);
